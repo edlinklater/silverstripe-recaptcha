@@ -4,16 +4,16 @@
  */
 
 /**
- * Protecter class to handle spam protection interface 
+ * Protecter class to handle spam protection interface
  */
 class RecaptchaProtector implements SpamProtector {
-	
+
 	/**
 	 * Return the Field that we will use in this protector
-	 * 
+	 *
 	 * @return string
 	 */
-	public function getFormField($name = "RecaptchaField", $title = "Captcha", $value = null) {
+	public function getFormField($name = "RecaptchaField", $title = "Captcha", $value = null, $form = null, $rightTitle = null) {
 		$field = new RecaptchaField($name, $title, $value);
 		$field->useSSL = Director::is_https();
 
@@ -25,4 +25,8 @@ class RecaptchaProtector implements SpamProtector {
 	 */
 	public function setFieldMapping($fieldMapping) {}
 
+	/**
+	 * Not used by Recaptcha
+	 */
+	public function sendFeedback($object = null, $feedback = "") {}
 }
